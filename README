@@ -1,0 +1,13 @@
+Wineofetch is a 'neofetch' like programs for Wine prefixes
+
+It display some informations about Wine and the Wine prefix and an ASCII art icon
+from desktop files of this prefix.
+
+To install, see the INSTALL file
+
+To use it on a Wine prefix :
+	WINEPREFIX="wine_prefix" wineofetch
+
+For the man-page :
+	wineofetch --help 
+Without joke it does'nt have a manual page yet

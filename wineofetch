@@ -1,0 +1,160 @@
+#!/usr/bin/env bash
+
+# Show/hide controls
+showprefix="on"
+showarch="on"
+showtricks="on"
+
+# Colors
+cltl="2"
+clun="6"
+clsb="1"
+clcl="4"
+clin="9"
+
+# Pictures datas
+picwidth="30"
+picdefault="        [0;1;30;90;47mt[0;1;37;97;47m.;;:.[0;1;30;90;47mX[0m
+   [0;1;30;90;47mS[0;1;37;97;47m@[0;37;5;47;107m@@XXXX@88[0;1;37;97;47m8S[0m
+ [0;1;37;97;47mt8[0;37;5;47;107m88@@SSSXX@88[0;1;37;97;47m8[0m
+[0;33;5;40;100m [0;37;5;47;107m88X@@@SS%SX@@8[0;1;37;97;47m8[0;1;30;90;47m [0m
+ [0;1;37;97;47mS[0;37;5;47;107m8tX@@S%%%SX[0;1;37;97;47mS[0;1;30;90;47m8[0;33;5;40;100m;[0;1;30;90;47m@[0m
+ [0;37;5;40;100m8[0;37;5;47;107m8S%@@X%tt%[0;1;37;97;47m [0;1;31;91;41m8SS[0;35;41mX[0m
+  [0;1;37;97;47m8[0;37;5;47;107mXtX@XS%t[0;1;31;91;47m@[0;1;31;91;41mX[0;35;41mXSS[0;1;30;90;41mt[0;35;5;40;100m.[0m
+  [0;1;30;90;47m8@[0;37;5;47;107m8S@@8[0;1;37;97;47m [0;31;5;41;101mt[0;35;41m8%t[0;1;30;90;41mt[0;35;41mS%[0;1;30;90;41m8[0m
+  [0;31;5;40;100m%[0;35;41m@[0;1;30;90;47m8[0;1;37;97;47m:[0;1;31;91;47m@[0;31;5;41;101m8[0;1;31;91;41m@[0;35;41m@[0;1;31;91;41mX[0;35;41mX[0;1;31;91;41mS[0;35;41mS%tt%[0;33;5;40;100m [0m
+   [0;35;5;40;100m [0;31;5;41;101m@[0;1;37;97;47m;.[0;1;30;90;45m8[0;1;31;91;41m8X[0;35;41m8[0;1;31;91;41m8XX[0;35;41mX[0;1;31;91;41mS[0;35;41mS[0;1;30;90;41mS[0;35;5;40;100m [0m
+   [0;31;5;40;100m8[0;35;5;40;100m8[0;1;30;90;45m8[0;1;37;97;47m.[0;1;33;93;47mS[0;31;5;41;101m8[0;35;41m8[0;31;5;41;101m@[0;1;31;91;41m8[0;35;41m8[0;31;5;41;101m8[0;35;41mX[0;1;31;91;41mX[0;35;41mSt[0;37;5;40;100m:[0m
+    [0;35;5;40;100m;[0;1;31;91;41m8[0;35;47m8[0;1;37;97;47m [0;35;5;41;101mt[0;31;45m8[0;31;5;41;101m@88[0;1;31;91;41m8@[0;35;41m8[0;1;31;91;41mS[0;35;41mS[0;33;5;40;100m.[0m
+     [0;35;5;40;100m%[0;1;31;91;41m@[0;35;47m8[0;1;37;97;47m [0;33;5;41;101m;[0;1;30;90;45m8[0;31;5;41;101mS[0;1;31;91;41m8[0;31;45m8[0;31;5;41;101m8[0;35;41mX[0;1;30;90;41mX[0;1;31;91;41mX[0;1;30;90;47m8[0m
+     [0;31;5;40;100m88[0;1;31;91;41mS[0;1;30;90;47m8[0;35;47m@[0;31;5;41;101m;[0;35;41m8[0;31;5;41;101m8[0;1;31;91;41m8[0;35;41m@[0;1;31;91;41m8[0;35;41mS%[0;1;30;90;47m8[0m
+      [0;31;5;40;100mX[0;1;30;90;41m8[0;1;31;91;41mX[0;1;30;90;45m8[0;37;43m8[0;31;5;41;101m@[0;31;45m8[0;1;31;91;41mX[0;35;41mX[0;1;30;90;41mX[0;35;41mt[0;1;30;90;41m8[0m
+       [0;31;5;40;100m8[0;35;5;40;100m%[0;1;31;91;41m@[0;35;41m8@[0;1;31;91;41mS[0;1;30;90;41m8[0;1;31;91;41mX[0;35;41mS%[0;33;5;40;100m [0m
+        [0;35;5;40;100mt[0;33;5;40;100mS[0;35;41mXSSS[0;1;30;90;41m8[0;1;30;90;47m8[0m
+           [0;31;5;40;100mS[0;37;5;40;100mX[0;1;30;90;47m8[0;37;5;40;100m:[0;1;37;97;47mt[0m
+             [0;33;5;40;100m [0;37;5;47;107m8[0;1;37;97;47m@[0m
+              [0;1;30;90;47m [0;1;37;97;47m8[0m
+              [0;33;5;40;100mt[0;1;37;97;47mX[0m
+               [0;1;37;97;47mt.[0m
+               [0;1;30;90;47m:[0;1;37;97;47mX[0;1;30;90;47mX[0m
+               [0;1;37;97;47m%X@%[0m
+             [0;37;5;40;100m@[0;1;37;97;47mtX@888@@@8@%[0;1;30;90;47m;[0m
+          [0;1;30;90;47m.[0;37;5;47;107m88@XS88[0;1;37;97;47m@[0;37;5;47;107m8[0;1;37;97;47mX88.[0;1;30;90;47m@[0m     "
+
+# Internal initialization
+linecount="2"
+lastfunction="enable"
+
+# Handling command line
+for cmd in $*; do
+		case $cmd in
+		-h | --help ) echo -e "Usage: $0 \"value\"
+
+Winefetch is a CLI Wine information tool written in BASH. Winefetch
+displays information about the WINEPREFIX next to an image that's
+could match software installed inside. This tool is inspired from
+Neofetch which do the same work for your system
+
+Options
+\t-h, \t --help
+\t\tShow this help and exit
+\t\t --enable a b c
+\t\tEnable informations about a, b and c
+\t\t --disable a b c
+\t\tDisable informations about a, b and c
+
+You can enable/disable infos about :
+	prefix \tThe path to the Wine prefix
+	arch \tThe arch of the Wine prefix
+	tricks \tThe version of Winetricks
+
+"
+# --colors x x x x x x
+#			 Changes the text colors in this order: title, @, underline, subtitle, colon, info
+			exit 0;;
+		--* | -* ) lastfunction="$cmd";;
+		* ) case "$lastfunction" in
+	 "--enable" | "--show" ) eval show$cmd="on";;
+	 "--disable" | "--hide" ) eval show$cmd="";;
+				esac;;
+	esac
+done
+printinfo()
+# Usage : printinfo(infotype,title,value)
+{
+	if [ -n "$1" ]; then
+		echo -e -n "\033[${picwidth}C\t\033[0;1;3${clsb}m$2\033[0;3${clcl}m:\t\033[0;3${clin}m"
+		eval echo $3
+		let linecount++
+	fi
+}
+### Prepare somethings ###
+# Find the WINEPREFIX
+if [ -z "$WINEPREFIX" ]; then
+	WINEPREFIX="$HOME/.wine"
+fi
+ORIGWINEPREFIX="$WINEPREFIX"
+# Get absolute path of WINEPREFIX
+WINEPREFIX="`realpath -s "$WINEPREFIX" 2> /dev/null`"
+if [ -z "$WINEPREFIX" ]; then
+WINEPREFIX="$ORIGWINEPREFIX"
+fi
+# Get the WINEARCH
+if [ -d "$WINEPREFIX" ]; then
+	if [ -d "$WINEPREFIX/drive_c/windows/syswow64" ]; then
+		WINEARCH="win64"
+	else WINEARCH="win32"
+	fi
+fi
+if [ -z "$WINEARCH" ]; then
+	WINEARCH="not yet defined"
+fi
+# Try to know if there's a WineTricks
+TRICKSPATH="`which winetricks`"
+# Locate a desktop file
+# TODO Look for a very good way to remove uninstallers
+desktopfiles=`grep -rwl --include=\*.desktop "WINEPREFIX=\"$WINEPREFIX\"" "$HOME/.local/share/applications/wine"`
+desktopfiles="`echo -n "$desktopfiles" | grep -iv "uninstall"`" # Remove uninstallers, removed soon...
+for desktopfile in "$desktopfiles"; do
+	# Skip dir/web links
+	if [ -z "`cat "$desktopfile" 2> /dev/null | grep -i "Type=Application"`" ]; then
+		continue
+	fi
+	desktopfile="`cat "$desktopfile" 2> /dev/null`"
+	break
+done
+### Now print ###
+if [ -z "`which wine`" ]; then
+	wineversion=""
+else wineversion="$(wine --version)"
+fi
+echo -e -n "\033[${picwidth}C\t\033[0;1;3${cltl}m$wineversion\n\033[${picwidth}C\t\033[0;3${clun}m"
+wineversionlength=${#wineversion}
+while [ "$wineversionlength" -gt "0" ]; do
+	echo -n "-"
+	let wineversionlength--
+done
+echo
+
+printinfo "$showprefix" 'Wine prefix' '$WINEPREFIX'
+printinfo "$showarch" 'Wine arch' '$WINEARCH'
+if [ -n "$TRICKSPATH" ]; then
+	printinfo "$showtricks" 'Winetricks' '$(which winetricks) $($TRICKSPATH --version | cut -d" " -f 1 )'
+fi
+### Print artwork ###
+echo -n -e "\033[${linecount}A"
+if [ -z "`which img2txt`" ]; then
+	desktopicon="$picdefault"
+else
+	desktopfile="`echo "$desktopfile" | grep "Icon=" | cut -d'=' -f '2-' 2> /dev/null`"
+	desktopicons="`find "$HOME/.local/share/icons" -name "*$desktopfile*" | sed 's/\(.*\)/"\1" /g' | xargs ls -S1 | cut -d'
+' -f1 2> /dev/null`"
+	desktopicon="`img2txt -f utf8 "$desktopicons" --width=$picwidth 2> /dev/null`"
+	if [ "$?" != "0" ]; then
+		desktopicon="$picdefault"
+	fi
+fi
+
+echo "$desktopicon"
+let linecount-=`echo -n "$desktopicon" | wc -l `
+echo -e "\033[${linecount}B"

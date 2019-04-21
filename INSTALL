@@ -1,0 +1,5 @@
+In the repository root, run :
+	./autogen.sh && ./configure && sudo make install
+
+You will need Wine itself callable from a bare 'wine', 
+Also 'img2txt' is used for ASCII-art, if missing a fallback Wine glass is hardcoded
